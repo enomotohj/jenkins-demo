@@ -4,6 +4,22 @@ pipeline{
         maven "mvn3" 
     }
     stages{
+        stage("test"){
+            steps{
+                sh "mvn clean test"
+            }
+            post{
+                always{
+                    echo "========test finished========"
+                }
+                success{
+                    echo "========test successfully========"
+                }
+                failure{
+                    echo "========test failed========"
+                }
+            }
+        }
         stage("build"){
             steps{
                 sh "mvn clean package"
