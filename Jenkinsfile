@@ -1,19 +1,27 @@
 pipeline{
     agent none
+    tools {
+        maven "mvn3" 
+    }
     stages{
-        stage("A"){
+        stage("checkout"){
             steps{
-                echo "========executing A========"
+                echo "========checkout========"
+            }
+        }
+        stage("build"){
+            steps{
+                bat mvn clean package
             }
             post{
                 always{
-                    echo "========always========"
+                    echo "build finished"
                 }
                 success{
-                    echo "========A executed successfully========"
+                    echo "========build successfully========"
                 }
                 failure{
-                    echo "========A execution failed========"
+                    echo "========build failed========"
                 }
             }
         }
