@@ -4,14 +4,9 @@ pipeline{
         maven "mvn3" 
     }
     stages{
-        stage("checkout"){
-            steps{
-                echo "========checkout========"
-            }
-        }
         stage("build"){
             steps{
-                bat "mvn clean package"
+                sh "mvn clean package"
             }
             post{
                 always{
