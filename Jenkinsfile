@@ -1,5 +1,5 @@
 pipeline{
-    agent none
+    agent any
     tools {
         maven "mvn3" 
     }
@@ -15,7 +15,7 @@ pipeline{
             }
             post{
                 always{
-                    echo "build finished"
+                    echo "========build finished========"
                 }
                 success{
                     echo "========build successfully========"
